@@ -1,0 +1,254 @@
+/* --- 1. VARIABLES & RESET --- */
+:root {
+    --ubc-blue: #002145;
+    --ubc-gold: #E2A828;
+    --dark-text: #333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: var(--dark-text);
+    padding-top: 80px;
+}
+
+/* --- 2. BACKGROUND LAYERS (Triple Layer System for Team Page) --- */
+#bg-default {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -3;
+    background-color: var(--ubc-blue);
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/hero.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+#bg-back {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -2;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.4);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; 
+}
+
+#bg-front {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.4);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* --- 3. NAVIGATION --- */
+header {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--ubc-blue);
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+nav ul { list-style: none; display: flex; gap: 25px; }
+nav a { text-decoration: none; color: var(--dark-text); font-weight: 600; transition: color 0.3s; }
+nav a:hover, nav a.active { color: var(--ubc-gold); }
+
+/* --- 4. HERO SECTION (Restored for Home Page) --- */
+.hero {
+    background: linear-gradient(rgba(0, 33, 69, 0.8), rgba(0, 33, 69, 0.6)), url('images/RoverMog.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    margin-top: -80px;
+    padding-top: 80px;
+}
+
+.hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+.hero p { font-size: 1.3rem; max-width: 700px; margin: 0 auto 2.5rem auto; }
+
+/* Buttons */
+.btn {
+    background-color: var(--ubc-gold);
+    color: var(--ubc-blue);
+    padding: 15px 35px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: transform 0.2s;
+    display: inline-block;
+}
+.btn:hover { transform: translateY(-3px); }
+
+.btn-outline {
+    border: 2px solid var(--ubc-blue);
+    background: transparent;
+    color: var(--ubc-blue);
+    padding: 13px 35px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    margin-left: 10px;
+    transition: all 0.3s;
+}
+.btn-outline:hover { background: var(--ubc-blue); color: white; }
+
+/* --- 5. LAYOUT --- */
+.section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    /* This handles both Dark Mode (Team) and Light Mode (Home) */
+    color: var(--ubc-blue); 
+    margin-bottom: 50px;
+}
+/* If the section title is inside a dark page (like team page w/ hidden bg), we can override it there, 
+   but for now, defaulting to Blue is safer for the Home page white background. */
+   
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* --- 6. THE CARD STYLE (Focus Mode Logic) --- */
+.card {
+    background-color: white; 
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    border-top: 5px solid var(--ubc-blue);
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.card h3 { color: var(--ubc-blue); margin-bottom: 10px; transition: color 0.3s; }
+.card p { color: var(--dark-text); transition: color 0.3s; }
+
+/* Grid Hover State (Everyone fades) */
+.grid:hover .card {
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(2px);
+    border-top-color: rgba(255, 255, 255, 0.5);
+    transform: scale(0.98);
+}
+.grid:hover .card h3 { color: rgba(255,255,255,0.8); }
+.grid:hover .card p { color: rgba(255,255,255,0.7); }
+
+/* Specific Card Hover State (The one you touch pops) */
+.grid .card:hover {
+    background-color: white;
+    transform: scale(1.05);
+    border-top-color: var(--ubc-gold);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    z-index: 10;
+}
+.grid .card:hover h3 { color: var(--ubc-blue); }
+.grid .card:hover p { color: var(--dark-text); }
+
+
+/* --- 7. SPONSORS (Restored for Home Page) --- */
+.sponsor-section {
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.tier-title {
+    color: var(--ubc-blue);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    opacity: 0.7;
+}
+
+.sponsor-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.sponsor-logo {
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.sponsor-logo:hover { transform: scale(1.1); }
+
+/* Sponsor Tiers Sizing */
+.tier-partner img   { max-height: 100px; }
+.tier-champion img  { max-height: 80px; }
+.tier-supporter img { max-height: 60px; }
+.tier-friend img    { max-height: 40px; }
+
+
+/* --- 8. FOOTER --- */
+footer {
+    background-color: var(--ubc-blue);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 60px;
+}
+
+/* --- 9. SCROLL ANIMATION --- */
+.hidden { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+.show { opacity: 1; transform: translateY(0); }
+
+/* --- FIX: TEAM PAGE TITLE CONTRAST --- */
+/* Target the title ONLY when it's inside the 'team-page' body */
+.team-page .section-title {
+    /* White provides maximum contrast over dark backgrounds */
+    color: white; 
+    
+    /* Adds a slight shadow to make the text pop over busy images */
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5); 
+}

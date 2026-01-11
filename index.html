@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | UBC Rover</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">UBC ROVER</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="team.html">Meet the Team</a></li>
+                    <li><a href="competitions.html">Competition</a></li>
+                    <li><a href="join.html">Join Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hidden">
+            <h1>UBC ROVER</h1>
+            <p>An autonomous robotics team from the University of British Columbia.</p>
+            <a href="join.html" class="btn">Join the Team</a>
+            <a href="#about" class="btn btn-outline" style="border-color: white; color: white;">Learn More</a>
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <div class="hidden" style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <h2 class="section-title">Who Are We?</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                We are a student-run design team from the University of British Columbia, dedicated to designing and building rovers to compete in international challenges.
+            </p>
+            <p style="font-size: 1.1rem;">
+                Since our inception, we have strived to push the boundaries of student robotics, earning top placements at the University Rover Challenge (URC) and the Canadian International Rover Challenge (CIRC).
+            </p>
+        </div>
+    </section>
+
+    <section class="section sponsor-section" id="sponsors">
+        <h2 class="section-title hidden">Our Sponsors</h2>
+        
+        <h3 class="tier-title hidden">Partner Sponsors</h3>
+        <div class="sponsor-grid tier-partner hidden">
+            <img src="images/sponsors/Thermo_Fisher_Scientific_Logo.png" alt="Thermo Fisher" class="sponsor-logo">
+            <img src="images/sponsors/Ember_Prototypes_Logo.jpg" alt="Ember Prototypes" class="sponsor-logo">
+        </div>
+
+        <h3 class="tier-title hidden">Champion Sponsors</h3>
+        <div class="sponsor-grid tier-champion hidden">
+            <img src="images/sponsors/aarc-west-industrial-logo.png" alt="AARC West" class="sponsor-logo">
+            <img src="images/sponsors/northstar-access.png" alt="Northstar Access" class="sponsor-logo">
+            <img src="images/sponsors/ubcengglogo.png" alt="UBC Engineering" class="sponsor-logo">
+            <img src="images/sponsors/edentech_logo.jpg" alt="EDEN TECH" class="sponsor-logo">
+        </div>
+
+        <h3 class="tier-title hidden">Supporters</h3>
+        <div class="sponsor-grid tier-supporter hidden">
+            <img src="Images/Sponsors/McCrae.png" alt="McCrae Marine Electronics" class="sponsor-logo">
+            <img src="images/tradecomm.png" alt="TradeComm" class="sponsor-logo">
+            <img src="images/ubc-mech.png" alt="UBC Mech" class="sponsor-logo">
+            <img src="images/petr-kleen.png" alt="PETR KLEEN" class="sponsor-logo">
+            <img src="images/protocase.png" alt="ProtoCase" class="sponsor-logo">
+        </div>
+
+        <h3 class="tier-title hidden">Friends</h3>
+        <div class="sponsor-grid tier-friend hidden">
+            <img src="images/gct.png" alt="Global Container Terminals" class="sponsor-logo">
+            <img src="images/electromate.png" alt="Electromate" class="sponsor-logo">
+            <img src="images/maxon.png" alt="Maxon" class="sponsor-logo">
+        </div>
+        
+        <div style="margin-top: 60px;" class="hidden">
+            <a href="mailto:captain@ubcrover.com" class="btn btn-outline">Become a Sponsor</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 UBC Mars Rover Team.</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) entry.target.classList.add('show');
+            });
+        });
+        document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>

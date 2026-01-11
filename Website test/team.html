@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet the Team | UBC Rover</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="team-page">
+
+    <div id="bg-default"></div>
+    
+    <div id="bg-back"></div>
+    
+    <div id="bg-front"></div>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">UBC ROVER</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="team.html" class="active">Meet the Team</a></li>
+                    <li><a href="competitions.html">Competition</a></li>
+                    <li><a href="join.html">Join Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section">
+        <h2 class="section-title hidden">Our Sub-Teams</h2>
+        
+        <div class="grid">
+            <div class="card hidden" data-bg="images/team-chassis.jpg">
+                <h3>Chassis</h3>
+                <p>We build the skeleton. Drivetrain, suspension, wheels, and frame.</p>
+            </div>
+            
+            <div class="card hidden" data-bg="images/team-arm.jpg">
+                <h3>Arm</h3>
+                <p>We build the muscle. A custom 6-axis robotic arm.</p>
+            </div>
+            
+            <div class="card hidden" data-bg="images/team-elec.jpg">
+                <h3>Electrical</h3>
+                <p>We build the nervous system. Custom PCBs and power distribution.</p>
+            </div>
+            
+            <div class="card hidden" data-bg="images/team-soft.jpg">
+                <h3>Software</h3>
+                <p>We build the brain. Autonomous pathfinding and vision.</p>
+            </div>
+            
+            <div class="card hidden" data-bg="images/team-sci.jpg">
+                <h3>Science</h3>
+                <p>We find life. Onboard laboratories to detect biosignatures.</p>
+            </div>
+            
+            <div class="card hidden" data-bg="images/team-biz.jpg">
+                <h3>Business</h3>
+                <p>We fuel the mission. Sponsorships, finance, and logistics.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 UBC Mars Rover Team.</p>
+    </footer>
+
+    <script>
+    // 1. SCROLL REVEAL
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add('show');
+        });
+    });
+    document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
+
+    // 2. BACKGROUND FADE LOGIC (Fixed for A -> B -> Exit bug)
+    const bgBack = document.getElementById('bg-back');
+    const bgFront = document.getElementById('bg-front');
+    const cards = document.querySelectorAll('.card');
+    
+    let leaveTimer;
+
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            clearTimeout(leaveTimer); // Stop any "leave" actions if we moved to a new card quickly
+
+            const newImage = card.getAttribute('data-bg');
+
+            if (newImage) {
+                // A. SETUP THE SNAPSHOT (BACK LAYER)
+                // If the Front layer currently has an image visible, snapshot it to the Back layer
+                if (bgFront.style.opacity === '1') {
+                    bgBack.style.backgroundImage = bgFront.style.backgroundImage;
+                    
+                    // IMPORTANT: Force the Back layer to be visible immediately (no transition)
+                    // This creates the solid base for the new image to fade over
+                    bgBack.style.transition = 'none';
+                    bgBack.style.opacity = '1';
+                }
+
+                // B. SETUP THE NEW IMAGE (FRONT LAYER)
+                // Prepare Front layer to fade in
+                bgFront.style.transition = 'none';
+                bgFront.style.opacity = '0';
+                bgFront.style.backgroundImage = `url('${newImage}')`;
+
+                // Force browser reflow (the magic hack to reset animations)
+                void bgFront.offsetWidth;
+
+                // C. EXECUTE THE FADE
+                bgFront.style.transition = 'opacity 0.5s ease-in-out';
+                bgFront.style.opacity = '1';
+            }
+        });
+
+        card.addEventListener('mouseleave', () => {
+            // Delay the fade out slightly for smoothness
+            leaveTimer = setTimeout(() => {
+                // Fade out the Front Layer (Current Image)
+                bgFront.style.opacity = '0';
+                
+                // NEW: Also fade out the Back Layer (Snapshot Image)
+                // This ensures we reveal the Default Layer (bg-default) underneath
+                bgBack.style.transition = 'opacity 0.5s ease-in-out';
+                bgBack.style.opacity = '0';
+                
+            }, 50); 
+        });
+    });
+</script>
+</body>
+</html>

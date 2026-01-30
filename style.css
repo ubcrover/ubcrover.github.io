@@ -3,6 +3,7 @@
     --ubc-blue: #002145;
     --ubc-gold: #E2A828;
     --dark-text: #333;
+    --light-text: #FFF;
 }
 
 * {
@@ -193,6 +194,12 @@ nav a:hover, nav a.active { color: var(--ubc-gold); }
 /* --- 7. SPONSORS (Restored for Home Page) --- */
 .sponsor-section {
     background-color: #f9f9f9;
+    text-align: center;
+}
+
+.sponsorus-section {
+    background-color: var(--ubc-blue);
+    color: var(--light-text);
     text-align: center;
 }
 

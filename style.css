@@ -294,3 +294,56 @@ footer {
     color: rgba(255,255,255,0.8);
     font-size: 0.9rem;
 }
+
+/* --- 10. SOCIAL MEDIA BUBBLES --- */
+.social-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.social-bubble {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1.2rem;
+    
+    /* Matching your button/card transition style */
+    transition: all 0.3s ease;
+    
+    /* Default State: UBC Gold circle with Blue icon */
+    background-color: var(--ubc-gold);
+    color: var(--ubc-blue);
+    
+    /* Optional: subtle shadow like your cards */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.social-bubble:hover {
+    /* "Pop" effect matching your .btn:hover */
+    transform: translateY(-3px);
+    
+    /* Invert colors on hover for a high-contrast interaction */
+    background-color: white;
+    color: var(--ubc-blue);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* If you prefer the bubbles to be Blue by default in the Footer */
+footer .social-bubble {
+    background-color: white;
+    color: var(--ubc-blue);
+}
+
+footer .social-bubble:hover {
+    background-color: var(--ubc-gold);
+    color: var(--ubc-blue);
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | UBC Rover</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">UBC ROVER</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="team.html">Meet the Team</a></li>
+                    <li><a href="competitions.html">Competition</a></li>
+                    <li><a href="ContactUs.html" class="active">Contact Us</a></li>
+                    <li><a href="join.html">Join Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    
+    <section class="section">
+        <h2 class="section-title hidden">Contact Us</h2>
+        
+        <div class="competition-box hidden">
+            <h3>Reach Out Today</h3>
+            <p>Feel free to follow us on our socials and contacts us to ask any questions! We look forward to hearing from you.</p>
+            <p>Email: rover.ubc@gmail.com</p>
+        </div>
+
+        <div class="social-bubble-container">
+            <a href="https://www.instagram.com/ubcrover/" class="social-bubble instagram"> <i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/UBCR0ver/" class="social-bubble facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="mailto:rover.ubc@gmail.com" class="social-bubble email"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://ca.linkedin.com/company/ubc-rover" class="social-bubble linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 UBC Rover Team.</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) entry.target.classList.add('show');
+            });
+        });
+        document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>

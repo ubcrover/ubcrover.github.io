@@ -347,3 +347,111 @@ footer .social-bubble:hover {
     background-color: var(--ubc-gold);
     color: var(--ubc-blue);
 }
+
+/* --- 11. CONTACT PAGE SPECIFIC --- */
+
+.contact-container {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-info h3 {
+    font-size: 1.8rem;
+    color: var(--ubc-blue);
+    margin-bottom: 15px;
+}
+
+.contact-email {
+    margin: 25px 0;
+}
+
+.contact-email a {
+    color: var(--ubc-blue);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* Form Styling within your Card class */
+.contact-form-card {
+    flex: 1.2;
+    min-width: 320px;
+    cursor: default; /* Overriding your card pointer cursor */
+}
+
+/* Prevent the contact card from scaling down like the grid cards on hover */
+.contact-form-card:hover {
+    transform: none; 
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--ubc-blue);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #EEE;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--ubc-gold);
+}
+
+
+/* Ensure options look clean */
+.form-group select option {
+    padding: 10px;
+    background-color: white;
+    color: var(--dark-text);
+}
+.contact-submit {
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}

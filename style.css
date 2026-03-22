@@ -65,14 +65,16 @@ header {
     align-items: center;
 }
 
-.nav-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+.brand-group {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    align-items: center; /* Vertically centers the logo with the text */
+}
+
+.header-logo {
+    height: 50px;       /* Adjust size as needed */
+    width: auto;
+    margin-right: 15px; /* Creates the gap between the logo and the text */
+    display: block;
 }
 
 .logo {
@@ -81,7 +83,20 @@ header {
     color: var(--ubc-blue);
     text-decoration: none;
     letter-spacing: 1px;
+    white-space: nowrap; /* Prevents "ROVER" from dropping to a second line */
 }
+
+/* Ensure the container pushes the brand left and the nav right */
+.nav-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+
 
 nav ul { list-style: none; display: flex; gap: 25px; }
 nav a { text-decoration: none; color: var(--dark-text); font-weight: 600; transition: color 0.3s; }
@@ -95,6 +110,9 @@ nav a:hover, nav a.active { color: var(--ubc-gold); }
     color: white;
     height: 85vh;
     display: flex;
+
+    flex-direction: column;
+
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -103,7 +121,16 @@ nav a:hover, nav a.active { color: var(--ubc-gold); }
     padding-top: 80px;
 }
 
-.hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+.hero-center-logo {
+    width: 375px;       /* Make it bigger than the header logo */
+    height: auto;
+    margin-bottom: -70px; /* Space between logo and "UBC ROVER" */
+    
+    /* Optional: helps the logo stand out on the dark background */
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3)); 
+}
+
+/*.hero h1 { font-size: 3.5rem; margin-top: -50px; margin-bottom: 1rem; }*/
 .hero p { font-size: 1.3rem; max-width: 700px; margin: 0 auto 2.5rem auto; }
 
 /* Buttons */
